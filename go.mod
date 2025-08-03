@@ -1,4 +1,4 @@
-module sportsify/config
+module github.com/laurisseau/sportsify-config
 
 go 1.23.5
 
