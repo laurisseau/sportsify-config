@@ -9,7 +9,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/secretsmanager"
-	"github.com/joho/godotenv"
+	//"github.com/joho/godotenv"
 )
 
 
@@ -56,17 +56,14 @@ func LoadSecrets(secretName string, region string) map[string]string {
 	return Secrets
 }
 
-// LoadSecretsEnv loads secretName and region from .env, then calls config.LoadSecrets
+// LoadSecretsEnv loads secretName and region from environment variables
 func LoadSecretsEnv() map[string]string {
+    secretName := os.Getenv("secretName")
+    region := os.Getenv("region")
 
-	// Load .env file
-	err := godotenv.Load("../config/.env")
-	if err != nil {
-		log.Println("Warning: No .env file found. Falling back to environment variables.")
-	}
+    if secretName == "" || region == "" {
+        log.Println("Warning: secretName or region not set in environment")
+    }
 
-	secretName := os.Getenv("secretName")
-	region := os.Getenv("region")
-
-	return LoadSecrets(secretName, region)
+    return LoadSecrets(secretName, region)
 }
