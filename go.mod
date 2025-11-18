@@ -9,6 +9,8 @@ require (
 	github.com/lib/pq v1.10.9
 )
 
+require filippo.io/edwards25519 v1.1.0 // indirect
+
 require (
 	github.com/aws/aws-sdk-go-v2/credentials v1.18.2 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.18.1 // indirect
@@ -21,4 +23,5 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.31.1 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.35.1 // indirect
 	github.com/aws/smithy-go v1.22.5 // indirect
+	github.com/go-sql-driver/mysql v1.9.3
 )
