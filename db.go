@@ -49,7 +49,7 @@ func DB() (*sql.DB, error) {
 	// Connection parameters
 	username := "root"
 	password := Secrets["MYSQL_PASSWORD"]
-	host := "127.0.0.1"
+	host := "localhost"
 	port := Secrets["MYSQL_PORT"]
 	database := "posts_db"
 
