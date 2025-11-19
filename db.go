@@ -5,7 +5,6 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"database/sql"
 	"fmt"
-	"log"
 )
 
 /*
@@ -43,7 +42,7 @@ func DB() *sql.DB {
 }
 */
 
-func DB() *sql.DB {
+func DB() (*sql.DB, error) {
 
 	Secrets := LoadSecretsEnv()
 
@@ -59,18 +58,17 @@ func DB() *sql.DB {
 
 	// Open database connection
 	db, err := sql.Open("mysql", dsn)
-	if err != nil {
-		log.Fatal("Failed to open database:", err)
-	}
-	defer db.Close()
+    if err != nil {
+        return nil, err
+    }
 
 	// Test the connection
 	err = db.Ping()
 	if err != nil {
-		log.Fatal("Failed to connect to database:", err)
+		return nil, err
 	}
 
 	fmt.Println("Successfully connected to MySQL!")
-	return db
+	return db, nil
 
 	}
