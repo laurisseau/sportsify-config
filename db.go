@@ -51,7 +51,7 @@ func DB() (*sql.DB, error) {
 	password := Secrets["MYSQL_PASSWORD"]
 	host := Secrets["MYSQL_HOST"]
 	port := Secrets["MYSQL_PORT"]
-	database := "posts_db"
+	database := Secrets["MYSQL_DATABASE"]
 
 	// Create DSN (Data Source Name)
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", username, password, host, port, database)
