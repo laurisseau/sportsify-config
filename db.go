@@ -47,9 +47,9 @@ func DB() (*sql.DB, error) {
 	Secrets := LoadSecretsEnv()
 
 	// Connection parameters
-	username := "root"
+	username := Secrets["MYSQL_USERNAME"]
 	password := Secrets["MYSQL_PASSWORD"]
-	host := "localhost"
+	host := Secrets["MYSQL_HOST"]
 	port := Secrets["MYSQL_PORT"]
 	database := "posts_db"
 
