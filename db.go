@@ -48,9 +48,9 @@ func DB() (*sql.DB, error) {
 
 	// Connection parameters
 	username := "root"
-	password := Secrets["MYSQL_PASSWORD"]// Get from k8s secret
-	host := "my-mysql-cluster.sql-server.svc.cluster.local" // K8s service DNS
-	port := "6446" // MySQL Router port
+	password := Secrets["MYSQL_PASSWORD"]
+	host := "127.0.0.1"
+	port := "6446"
 	database := ""
 
 	// Create DSN (Data Source Name)
