@@ -50,11 +50,12 @@ func DB() (*sql.DB, error) {
 	username := "root"
 	password := Secrets["MYSQL_PASSWORD"]
 	host := "127.0.0.1"
-	port := 3306
+	port := Secrets["MYSQL_PORT"]
 	database := "posts_db"
 
 	// Create DSN (Data Source Name)
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?parseTime=true", username, password, host, port, database)
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", username, password, host, port, database)
+
 	// Open database connection
 	db, err := sql.Open("mysql", dsn)
     if err != nil {
